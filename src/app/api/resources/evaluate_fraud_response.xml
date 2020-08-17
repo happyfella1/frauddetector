@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RiskEvaluation>
+    <Recommendation>ACCEPT</Recommendation>
+    <Strategy>
+        <Name>DEFAULT_STRATEGY</Name>
+        <Id>SID1</Id>
+    </Strategy>
+    <RulesEvaluated>
+        <Rule>
+            <RuleId>INITIATE_PAYMENT_AWSFRAUD</RuleId>
+            <Name>Inbuilt Fraud Score</Name>
+            <Result>SUCCESS</Result>
+            <Category>FRAUD</Category>
+            <Response>
+                <AdditionalInfo>
+                    <Key>FRAUD_SCORE</Key>
+                    <Value>850</Value>
+                </AdditionalInfo>
+            </Response>
+        </Rule>
+    </RulesEvaluated>
+    <Source>
+        <Type>TRANSACTION</Type>
+        <TransactionInfo>
+            <OrgnlInstrId>InstrId0</OrgnlInstrId>
+            <OrgnlEndToEndId>EndToEndId0</OrgnlEndToEndId>
+        </TransactionInfo>
+    </Source>
+</RiskEvaluation>

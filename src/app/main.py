@@ -11,7 +11,6 @@ def create_application() -> FastAPI:
     application = FastAPI()
     application.include_router(ping.router)
     application.include_router(evaluate_fraud.router)
-
     return application
 
 
