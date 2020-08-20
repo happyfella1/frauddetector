@@ -28,5 +28,5 @@ def get_event_prediction(transaction: Transaction):
             'ip_address':transaction.ip_address,
         }
     )
-    return {"score": response['modelScores'][0]['scores']['model2_insightscore']}
+    return {"score": response['modelScores'][0]['scores']['fraudmodel1_insightscore']}
 

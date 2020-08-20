@@ -5,13 +5,6 @@
             <RjctnDtTm>2020-07-27T22:33:40.759+05:30</RjctnDtTm>
             <RsnDesc>Error</RsnDesc>
             <AddtlData>
-                <errors>
-                    <error>
-                        <code>1002</code>
-                        <message>Invalid configuration for client combination</message>
-                        <target>config.invalid</target>
-                    </error>
-                </errors>
             </AddtlData>
         </Rsn>
     </admi.002.001.01>
