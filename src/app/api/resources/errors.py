@@ -29,11 +29,11 @@ class CustomError(Exception):
         self.target = target
         super().__init__(self.message)
 
-    def get_error_xml_string(message):
+    def get_error_xml_string(self):
         return ' --><![CDATA[' + '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><errors><error>' \
-                '<code>' + message.code + '</code>' \
-                '<message>' + message.message + '</message>' \
-                '<target>' + message.target + '</target>' \
+                '<code>' + self.code + '</code>' \
+                '<message>' + self.message + '</message>' \
+                '<target>' + self.target + '</target>' \
                 '</error></errors>' + ']]><!-- '
 
 
