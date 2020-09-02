@@ -7,18 +7,41 @@ errors = {
         "status_code": "500"
     },
     "invalid_header_timestamp": {
-        "code": "RSK-00-1003",
+        "code": "RSK-10-1003",
         "message": "Invalid header timestamp",
-        "target": "timestamp",
+        "target": "header.timestamp",
         "status_code": "400"
     },
     "invalid_header_idempotentkey": {
-        "code": "RSK-00-1001",
+        "code": "RSK-10-1011",
         "message": "Invalid header idempotent key",
-        "target": "idempotent_key",
+        "target": "header.idempotent_key",
+        "status_code": "400"
+    },
+    "invalid_header_client_key":{
+        "code": "RSK-10-1002",
+        "message": "Invalid header client key",
+        "target": "header.client_key",
+        "status_code": "400"
+    },
+    "invalid_header_product":{
+        "code": "RSK-10-1001",
+        "message": "Invalid header product",
+        "target": "header.product",
+        "status_code": "400"
+    },
+    "invalid_header_payment_channel":{
+        "code": "RSK-10-1004",
+        "message": "Invalid header payment channel",
+        "target": "header.payment_channel",
+        "status_code": "400"
+    },
+    "invalid_header_requestor_type":{
+        "code": "RSK-10-1006",
+        "message": "Invalid header requestor type",
+        "target": "header.requestor_type",
         "status_code": "400"
     }
-
 }
 
 

@@ -19,7 +19,8 @@ ET.register_namespace("", errors["admi_namespace"])
 async def evaluate_fraud(request: Request):
     try:
         headers = dict(request.headers)
-        validated_headers = validate_headers(headers)
+        validated_headers = validate_headers(headers)[0]
+        response_headers = validate_headers(headers)[1]
         body_xml = await request.body()
         root = ET.fromstring(body_xml)
         timestamp = validated_headers["timestamp"]
@@ -33,11 +34,11 @@ async def evaluate_fraud(request: Request):
         response = ET.parse('app/api/resources/evaluate_fraud_response.xml').getroot()
         response[2][0][4][0][1].text = str(awsfraud_result["score"])
         response_string = ET.tostring(response)
-        return Response(content=response_string, headers=validated_headers, media_type="application/xml")
+        return Response(content=response_string, headers=response_headers, media_type="application/xml")
     except InvalidHeader as e:
         log.error(e)
         response = ET.parse('app/api/resources/error.xml').getroot()
-        response[0][0][0].text = str(datetime.now())
+        response[0][0][0].text = str(datetime.now().isoformat())
         response[0][0][2].append(ET.Comment(e.get_error_xml_string()))
         response_string = ET.tostring(response)
         return Response(content=response_string, media_type="application/xml", status_code=400)
@@ -45,7 +46,7 @@ async def evaluate_fraud(request: Request):
     except Exception as e:
         log.error(e)
         response = ET.parse('app/api/resources/error.xml').getroot()
-        response[0][0][0].text = str(datetime.now())
+        response[0][0][0].text = str(datetime.now().isoformat())
         error = errors["internal_server_error"]
         is_error = InternalServerError(
             code=error["code"],
