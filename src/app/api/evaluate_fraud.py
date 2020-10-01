@@ -1,15 +1,16 @@
 import xml.etree.ElementTree as ET
 from datetime import datetime
-import logging
 
 from fastapi import APIRouter, Request, Response
 
+from app.log_util import get_logger
 from app.awsfraud.requestor import get_event_prediction
 from app.api.resources.errors import errors, InvalidHeader, InternalServerError
 from app.api.util import validate_headers
 
+
 router = APIRouter()
-log = logging.getLogger(__name__)
+log = get_logger(__name__)
 #Move below urn to errors.py file
 ET.register_namespace("", errors["admi_namespace"])
 
@@ -17,6 +18,7 @@ ET.register_namespace("", errors["admi_namespace"])
     "/fraudsrvcs/v1/initiate_payment/evaluate_fraud", status_code=200
 )
 async def evaluate_fraud(request: Request):
+    log.info("Received request for evaluate_fraud")
     try:
         headers = dict(request.headers)
         validated_headers = validate_headers(headers)[0]

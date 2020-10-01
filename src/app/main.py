@@ -1,10 +1,11 @@
-import logging
+from app.log_util import get_logger
+import os
 
 from fastapi import FastAPI
 
 from app.api import evaluate_fraud, ping
 
-log = logging.getLogger(__name__)
+log = get_logger(__name__)
 
 
 def create_application() -> FastAPI:

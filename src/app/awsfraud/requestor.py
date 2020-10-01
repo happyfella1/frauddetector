@@ -1,13 +1,12 @@
-import logging
-
 from pydantic import validate_arguments
 
+from app.log_util import get_logger
 from app.awsfraud.client import get_aws_fd_client
 from app.models.pydantic import Transaction
 from app.api.resources.errors import errors, InvalidHeader, InternalServerError
 
 client = get_aws_fd_client()
-log = logging.getLogger(__name__)
+log = get_logger(__name__)
 
 
 @validate_arguments
@@ -32,6 +31,7 @@ def get_event_prediction(transaction: Transaction):
         )
         return {"score": response['modelScores'][0]['scores']['fraudmodel1_insightscore']}
     except Exception as e:
+        log.error(e)
         error = errors["internal_server_error"]
         raise InternalServerError(
             code=error["code"],

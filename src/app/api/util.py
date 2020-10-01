@@ -1,8 +1,7 @@
-import logging
-
+from app.log_util import get_logger
 from app.api.resources.errors import InvalidHeader, errors
 
-log = logging.getLogger(__name__)
+log = get_logger(__name__)
 
 
 def validate_headers(headers:dict):
