@@ -11,6 +11,6 @@ services:
     environment:
       - ALA_ENVIRONMENT_TYPE=qa
       - TESTING=0
-      - AWS_ACCESS_KEY_ID=AKIAUWWED53AHUIH6INU
-      - AWS_SECRET_ACCESS_KEY=hC3Pj/NZuZR5oxgKzc6nbPv+JPiWu2VNiApRH4Hp
+      - AWS_ACCESS_KEY_ID=Your ID
+      - AWS_SECRET_ACCESS_KEY=Your KEY
       - AWS_FD_REGION=us-east-2
